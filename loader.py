@@ -5,7 +5,7 @@ from aiogram.enums.parse_mode import ParseMode
 from config import TOKEN
 from utils.db_api.db import Database
 
-bot = Bot(token=TOKEN)
+bot = Bot(token="8480198180:AAEW77pIbxADy635zDogszazI8B_hiVUNvQ")
 storage = MemoryStorage()
 dp = Dispatcher(storage=storage)
 
