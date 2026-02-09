@@ -45,9 +45,12 @@ class Database:
         sql = """
             CREATE TABLE IF NOT EXISTS users(
                 id INT PRIMARY KEY AUTO_INCREMENT,
-                telegram_id INT NOT NULL UNIQUE,
-                fullname VARCHAR(100),
-                username VARCHAR(100)
+                telegram_id VARCHAR(255) NOT NULL UNIQUE,
+                fullname VARCHAR(255) NOT NULL,
+                age VARCHAR(255) NOT NULL,
+                address TEXT NOT NULL,
+                
+                CONSTRAINT check_age CHECK(age >= 0)
             )
         """
         self.execute(sql)
