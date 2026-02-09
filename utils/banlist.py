@@ -1,0 +1,1 @@
+Banned_names = ["aziz","laziz","saloh","komil"]

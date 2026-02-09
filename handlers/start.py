@@ -3,7 +3,7 @@ from aiogram.filters.command import CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import StatesGroup,State
 from aiogram.fsm.context import FSMContext
-
+from utils import banlist
 from router import router
 
 class UserRegistrationForm(StatesGroup):
@@ -20,10 +20,12 @@ async def start(message: types.Message, state: FSMContext):
 
 @router.message(UserRegistrationForm.fullname)
 async def save_fullname(message: types.Message, state: FSMContext):
-    await message.answer("Ismingiz qabul qilindi ✅")
-
-    await state.set_state(UserRegistrationForm.age)
-    await message.answer("Yoshingizni kiriting: ")
+    if message.text.lower in banlist:
+        await message.answer("Siz oq qilindingiz😂😂😂")
+    else:
+        await message.answer("Ismingiz qabul qilindi ✅")
+        await state.set_state(UserRegistrationForm.age)
+        await message.answer("Yoshingizni kiriting: ")
 
 @router.message(UserRegistrationForm.age)
 async def save_age(message: types.Message, state: FSMContext):
